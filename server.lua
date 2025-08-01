@@ -65,6 +65,7 @@ lib.addCommand('setfuel', {
     local level = args.level
 
     if level then
-        lib.callback('vehiclehandler:adminfuel', source, function() end, level)
+    --    lib.callback('vehiclehandler:adminfuel', source, function() end, level)
+		exports["lc_fuel"]:SetFuel(vehicle, level)
     end
 end)
