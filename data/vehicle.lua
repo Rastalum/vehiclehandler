@@ -61,6 +61,7 @@ return {
         [`deluxo`] = true,
         [`scramjet`] = true,
         [`vigilante`] = true,
+		[`17mov_forklift`] = true,
     },
     backengine = {
         [`ninef`] = true,
