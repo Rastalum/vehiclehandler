@@ -48,7 +48,7 @@ local function startThread(vehicle)
             if not electric and class ~= 14 then
                 local fuel = oxfuel and Entity(vehicle).state.fuel or GetVehicleFuelLevel(vehicle) or exports["lc_fuel"]:GetFuel(vehicle)
 
-                if fuel <= 7 then
+                if fuel <= 3 then
                     if IsVehicleDriveable(vehicle, true) then
                         SetVehicleUndriveable(vehicle, true)
                     end
