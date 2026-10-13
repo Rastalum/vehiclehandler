@@ -68,9 +68,11 @@ end
 ---@param vehicle number
 ---@param level number
 local function setVehicleFuel(vehicle, level)
-    if GetResourceState('ox_fuel') ~= 'started' then return end
+    --if GetResourceState('ox_fuel') ~= 'started' then return end
+    if GetResourceState('lc_fuel') ~= 'started' then return end
 
     Entity(vehicle).state:set('fuel', level, true)
+    --exports["lc_fuel"]:SetFuel(vehicle, level)
 end
 
 ---@param vehicle number
@@ -105,7 +107,7 @@ exports('setFuel', setFuel)
 
 lib.addCommand('fix', {
     help = locale('commands.fix.help'),
-    restricted = 'group.admin'
+    restricted = {'group.admin', 'group.mod'}
 }, function(source)
     local vehicle <const> = getPlayerVehicle(source)
     if vehicle then fixVehicle(vehicle, source) end
@@ -113,7 +115,7 @@ end)
 
 lib.addCommand('wash', {
     help = locale('commands.wash.help'),
-    restricted = 'group.admin'
+    restricted = {'group.admin', 'group.mod'}
 }, function(source)
     local vehicle <const> = getPlayerVehicle(source)
     if vehicle then sendToOwner(vehicle, source, 'vehiclehandler:client:applyWash') end
@@ -128,7 +130,7 @@ lib.addCommand('setfuel', {
             help = locale('commands.setfuel.params.help'),
         },
     },
-    restricted = 'group.admin'
+    restricted = {'group.admin', 'group.mod'}
 }, function(source, args)
     local level = tonumber(args.level)
     local vehicle <const> = getPlayerVehicle(source)
